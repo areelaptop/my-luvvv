@@ -1,0 +1,5 @@
+nama = input("Al Fahrezy Syaernaddin")
+usia = input("18 years old")
+alamat = input("Jalan Perkutut")
+hobi = input("play a game")
+pekerjaan =("memancing")
