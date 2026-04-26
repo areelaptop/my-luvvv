@@ -139,6 +139,13 @@ button {
   object-fit: cover;
 }
 
+.caption {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #5c3d46;
+  font-weight: bold;
+}
+
 .bubble {
   position: absolute;
   bottom: -50px;
@@ -201,6 +208,10 @@ button {
       <img id="slideImage" src="mbg3.jpeg">
     </div>
 
+    <div class="caption" id="captionText">
+      kamu itu lucu bangett
+    </div>
+
     <button class="yes" onclick="prevSlide()">⬅</button>
     <button class="yes" onclick="nextSlide()">➡</button>
   </div>
@@ -217,9 +228,9 @@ const texts = [
 ];
 
 const slides = [
-  "mbg3.jpeg",
-  "mbg4.jpeg",
-  "mbg5.jpeg"
+  { img: "mbg3.jpeg", text: "kamu itu lucu bangett" },
+  { img: "mbg4.jpeg", text: "kamu itu selalu cantik di mata akuu" },
+  { img: "mbg5.jpeg", text: "makasih ya sudah menjadi manusia favorit akuu, dan semoga bisa terus seperti itu" }
 ];
 
 let index = 0;
@@ -243,6 +254,11 @@ function nextText() {
   }
 }
 
+function updateSlide() {
+  document.getElementById("slideImage").src = slides[slideIndex].img;
+  document.getElementById("captionText").innerText = slides[slideIndex].text;
+}
+
 function nextSlide() {
   slideIndex++;
   if (slideIndex >= slides.length) slideIndex = 0;
@@ -253,10 +269,6 @@ function prevSlide() {
   slideIndex--;
   if (slideIndex < 0) slideIndex = slides.length - 1;
   updateSlide();
-}
-
-function updateSlide() {
-  document.getElementById("slideImage").src = slides[slideIndex];
 }
 
 function runAway() {
@@ -274,7 +286,6 @@ function createBubble() {
   bubble.style.animationDuration = (4 + Math.random() * 4) + "s";
 
   document.body.appendChild(bubble);
-
   setTimeout(() => bubble.remove(), 8000);
 }
 
